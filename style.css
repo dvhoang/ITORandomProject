@@ -1,15 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100&display=swap");
 
 * {
   box-sizing: border-box;
 }
-
-html,
-body {
+*/
+html, body {
   height: 100%;
 }
 
-.hothot{
+
+header h1 {
+  font-weight: normal;
+  padding: 20px;
+  font-size: 42px;
+  letter-spacing: 0.1em;
+}
+
+main {
+  width: 80%;
+  max-width: 400px;
+  margin: auto;
+  font-size: clamp(60px, 30vw, 200px);
+  border: solid 2px;
+}
+
+main #odometer {
+  display: block;
+  margin: 0;
+  padding: 0 20px;
+}
+
+body {
+  --c1: #fbda61;
+  --c2: #ff5acd;
+  display: block;
+  place-items: center;
+  place-content: center;
+  gap: 2rem;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+/* .hothot{
   color:teal;
 }
 
@@ -33,17 +64,9 @@ h2{
   margin-left:-142px;
   margin-top: 50px;
 }
+*/
 
-body {
-  --c1: #fbda61;
-  --c2: #ff5acd;
-  display: grid;
-  place-items: center;
-  place-content: center;
-  gap: 2rem;
-  font-family: "Roboto Flex", sans-serif;
-}
-
+/*
 .counter {
   position: relative;
   font-size: max(2rem, 1rem + 12vw);
@@ -106,4 +129,4 @@ body {
 .btn-restart:active {
   color: black;
   background-color: #f4e4ca;
-}
+} */
