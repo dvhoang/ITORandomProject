@@ -24,13 +24,57 @@ main {
   border: solid 2px;
 }
 
-main #odometer {
-  display: block;
-  margin: 0;
-  padding: 0 20px;
+.odometer {
+  color: whitesmoke;
+  font-size: 250px;
+  font-family: 'Nunito', sans-serif;
 }
 
-body {
+.logowrap{
+  max-width: 250px;
+}
+
+.rollbutton{
+  background-color: whitesmoke;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+}
+
+.buttoncontainer{
+}
+
+.numbox{
+  background-image: linear-gradient(315deg, #034846 0%, #2a5470 74%);
+  width: 210px;
+  border-radius: 25px;
+  border-width: 12px;
+  border-style: solid;
+  border-color: #2a547053;
+  text-align: center;
+}
+
+.luckynumber{
+  color: transparent;
+  font-size: 5em;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  background-image: linear-gradient(
+    to bottom,
+    #462523 0,
+    #cb9b51 22%,
+    #f6e27a 45%,
+    #f6f2c0 50%,
+    #f6e27a 55%,
+    #cb9b51 78%,
+    #462523 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 2px;
+  -webkit-text-stroke-color: #cb9b51;
+}
+
+/* body {
   --c1: #fbda61;
   --c2: #ff5acd;
   display: block;
@@ -38,7 +82,7 @@ body {
   place-content: center;
   gap: 2rem;
   font-family: "Roboto Flex", sans-serif;
-}
+} */
 
 /* .hothot{
   color:teal;

@@ -8,29 +8,60 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./style2.css">
+  <link rel="stylesheet" href="./odo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <link href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css" rel="stylesheet">
   <style>
     body {
-      background-image: linear-gradient(to top,#006a69 15%, #fff, #fff);
+      background-image: url(bg.jpg);
+      background-repeat: no-repeat;
+      background-size:cover;
     }
   </style>
 </head>
 
 <body>
-  <div class="topdiv">
-    <img class="logo" src="logoito.png">
+  <div class="logowrap mx-auto row d-flex justify-content-center">
+    <img class="logo pt-4 mx-auto d-block" src="logoito.png" >
   </div>
-  <h1 class="hothot">10 Years Anniversary</h1>
-  <h2 class="page-name">LUCKY NUMBER</h2>
+
+  <div class="d-flex justify-content-center mt-5">
+    <p class="col-md-12 text-center luckynumber">LUCKY NUMBER</p>
+  </div>
+  
   <!-- <h1 class="counter" data-count-start="001">999</h1>
   <button class="btn-restart">Restart</button> -->
-  <main>
-    <p class="odometer" id="odometer">0</p>
-  </main>
+  <div class="d-flex align-items-center justify-content-center mt-5 h-25">
+    <div class="numbox my-auto m-2">
+        <div class="odometer" id="odometer1"></div>
+    </div>
+
+    <div class="numbox my-auto m-2">
+      <div class="odometer" id="odometer2"></div>
+    </div>
+ 
+    <div class="numbox my-auto m-2">
+      <div class="odometer" id="odometer3"></div>
+    </div>
+
+  </div>
+
+  <div class="buttoncontainer d-flex fixed-bottom mb-3">
+    <div class="rollbutton d-flex ms-auto me-3" id="randombutton">
+      <img class="rollicon mx-auto my-auto" src="reset.png">
+    </div>
+    <div class="rollbutton d-flex me-5" id="nextbutton">
+      <img class = "nexticon mx-auto my-auto" src="next.png">
+    </div>
+  </div>
+
+  <div id="snackbar">Chức năng đang được phát triển</div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  <script src="https://github.hubspot.com/odometer/odometer.js"></script>
+  <!-- <script src="https://github.hubspot.com/odometer/odometer.js"></script> -->
+  <script type ="module" src="./odo.js"></script>
   <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
   <script type="module" src="./script.js"></script>
   <script type="module" src="./script2.js"></script>
