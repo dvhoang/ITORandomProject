@@ -16,28 +16,48 @@ const nextButton = document.getElementById("nextbutton");
 nextButton.addEventListener("click", nextPage);
 
 window.odometerOptions = {
-    duration: 10 * 1000
+    // duration: 10 * 1000
     //,animation: 'count'
   };
 
-  
-
-
 setTimeout(function(){
-    odometer1.innerHTML = 1;
-    odometer2.innerHTML = 2;
-    odometer3.innerHTML = 8;
+    odometer1.innerHTML = 0;
+    odometer2.innerHTML = 0;
+    odometer3.innerHTML = 0;
 }, );
 
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
-  }
+}
+
+var luckyArray = []
+
+init();
+function init(){
+    var index = 0
+    for(let i = 100; i< 200; i++){
+        if(i%2 != 0){
+            luckyArray[index++]=i
+        }
+    }
+}
 
 function randomRun(){
     console.log("click random")
-    const luckyNum1 = randomIntFromInterval(0, 2)
-    const luckyNum2 = randomIntFromInterval(0, 9)
-    const luckyNum3 = randomIntFromInterval(0, 9)
+
+    const randomIndex = randomIntFromInterval(0, luckyArray.length - 1)
+
+    const luckyNumber = luckyArray.splice(randomIndex, 1)
+
+    const luckyNum1 = Math.floor(luckyNumber / 100)
+    const luckyNum2 = Math.floor((luckyNumber - luckyNum1 * 100) / 10)
+    const luckyNum3 = (luckyNumber - luckyNum1 * 100) % 10
+
+    console.log("arr:"+luckyArray)
+    console.log("ln:"+luckyNumber)
+    console.log("ln1:"+luckyNum1)
+    console.log("ln2:"+luckyNum2)
+    console.log("ln3:"+luckyNum3)
 
     odometer1.innerHTML = luckyNum1;
     odometer2.innerHTML = luckyNum2;
