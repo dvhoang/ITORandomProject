@@ -59,6 +59,12 @@ function randomRun(){
     console.log("ln2:"+luckyNum2)
     console.log("ln3:"+luckyNum3)
 
+    // while(true){
+    //     odometer1.innerHTML = 9;
+    //     await new Promise(r => setTimeout(r, 1000));
+    //     odometer1.innerHTML = 5;
+    // }
+
     odometer1.innerHTML = luckyNum1;
     odometer2.innerHTML = luckyNum2;
     odometer3.innerHTML = luckyNum3;

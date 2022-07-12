@@ -1,0 +1,57 @@
+.odometer {
+  height: 1em;
+  color: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+}
+
+.digit {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+/* 
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px); */
+}
+.digit:first-child {
+  border-left: none;
+}
+
+.digit-container {
+  line-height: 1em;
+  -webkit-animation: slide infinite linear;
+  animation: slide infinite linear;
+}
+
+.digit-one {
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+}
+
+.digit-ten {
+  -webkit-animation-duration: 5000ms;
+  animation-duration: 5000ms;
+}
+
+.digit-hundred {
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+}
+
+@-webkit-keyframes slide {
+  from {
+    -webkit-transform: translateY(-10em);
+  }
+  to {
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateY(-10em);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
