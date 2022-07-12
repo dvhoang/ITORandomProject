@@ -495,13 +495,16 @@
       };
   
       Odometer.prototype.animateSlide = function(newValue) {
-        console.log("animateSlide")
+        console.log("animateSlide ++++++++++++=")
         var boosted, cur, diff, digitCount, digits, dist, end, fractionalCount, frame, frames, i, incr, j, mark, numEl, oldValue, start, _base, _i, _j, _k, _l, _len, _len1, _len2, _m, _ref, _results;
         oldValue = this.value;
         fractionalCount = this.getFractionalDigitCount(oldValue, newValue);
         if (fractionalCount) {
           newValue = newValue * Math.pow(10, fractionalCount);
           oldValue = oldValue * Math.pow(10, fractionalCount);
+        }
+        if(oldValue == newValue){
+            oldValue = oldValue + 1;
         }
         console.log("newValue " + newValue)
         console.log("oldValue " + oldValue)
@@ -543,24 +546,24 @@
               return _results;
             }).apply(this);
           }
-          var x;
-          var tempFrames = [];
+        //   var x;
+        //   var tempFrames = [];
           
-          for(x = 0; x < frames.length; x++){
-            tempFrames[x] = frames[x];
-          }
-          for(x = 0; x < 100; x++){
-            frames[x] = Math.abs(x%10);
-          }
-          for(x = 0; x < tempFrames.length; x++){
-            frames[100 + x] = tempFrames[x];
-          }
+        //   for(x = 0; x < frames.length; x++){
+        //     tempFrames[x] = frames[x];
+        //   }
+        //   for(x = 0; x < 100; x++){
+        //     frames[x] = Math.abs(x%10);
+        //   }
+        //   for(x = 0; x < tempFrames.length; x++){
+        //     frames[100 + x] = tempFrames[x];
+        //   }
 
-          // for (i = _k = 0, _len = preFrames.length; _k < _len; i = ++_k) {
-          //   frame = frames[i];
-          //   preFrames[x+i] = Math.abs(frame % 10);
-          //   console.log("i " + frames[i]) 
-          // }
+        for (i = _k = 0, _len = frames.length; _k < _len; i = ++_k) {
+            frame = frames[i];
+            frames[i] = Math.abs(frame % 10);
+            console.log("i " + frames[i]) 
+        }
 
           digits.push(frames);
         }

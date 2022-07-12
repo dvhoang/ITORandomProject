@@ -16,7 +16,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <style>
     body {
-      background-image: url(bg.jpg);
+      background-image: url(bg2.jpg);
       background-repeat: no-repeat;
       background-size:cover;
     }
@@ -31,37 +31,43 @@
   <div class="d-flex justify-content-center mt-5">
     <p class="col-md-12 text-center luckynumber">LUCKY NUMBER</p>
   </div>
+
   
   <!-- <h1 class="counter" data-count-start="001">999</h1>
   <button class="btn-restart">Restart</button> -->
   <div class="d-flex align-items-center justify-content-center mt-5 h-25">
+    
+<div class="stackLayer d-flex align-items-center justify-content-center mt-5 h-25">
 
-    <div class="numbox my-auto m-2">
-        <div class="odometer" id="odometer1"></div>
+      <div class="numbox my-auto m-2">
+          <div class="odometer" id="odometer1"></div>
+      </div>
+
+      <div class="numbox my-auto m-2">
+        <div class="odometer" id="odometer2"></div>
+      </div>
+  
+      <div class="numbox my-auto m-2">
+        <div class="odometer" id="odometer3"></div>
+      </div>
     </div>
 
-    <div class="numbox my-auto m-2">
-      <div class="odometer" id="odometer2"></div>
+    <div class="stackLayer odometerx d-flex align-items-center justify-content-center mt-5 h-25">
+      <div class="digit numbox my-auto m-2" id="maskodometer1">
+        <div class="digit-container digit-hundred">0 9 8 7 6 5 4 3 2 1 0</div>
+      </div>
+
+      <div class="digit numbox my-auto m-2" id="maskodometer2">
+        <div class="digit-container digit-ten">0 9 8 7 6 5 4 3 2 1 0</div>
+      </div>
+
+      <div class="digit numbox my-auto m-2" id="maskodometer3">
+        <div class="digit-container digit-one">0 9 8 7 6 5 4 3 2 1 0</div>
+      </div>
     </div>
- 
-    <div class="numbox my-auto m-2">
-      <div class="odometer" id="odometer3"></div>
-    </div>
+  
   </div>
 
-  <!-- <div class="odometer d-flex align-items-center justify-content-center mt-5 h-25">
-    <div class="digit numbox m-2">
-      <div class="digit-container digit-hundred">0 9 8 7 6 5 4 3 2 1 0</div>
-    </div>
-
-    <div class="digit numbox m-2">
-      <div class="digit-container digit-ten">0 9 8 7 6 5 4 3 2 1 0</div>
-    </div>
-
-    <div class="digit numbox m-2">
-      <div class="digit-container digit-one">0 9 8 7 6 5 4 3 2 1 0</div>
-    </div>
-  </div> -->
 
   <div class="buttoncontainer d-flex fixed-bottom mb-3">
     <div class="rollbutton d-flex ms-auto me-3" id="randombutton">
@@ -71,14 +77,12 @@
       <img class = "nexticon mx-auto my-auto" src="next.png">
     </div>
   </div>
-
   <div id="snackbar">Chức năng đang được phát triển</div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <!-- <script src="https://github.hubspot.com/odometer/odometer.js"></script> -->
   <script type ="module" src="./odo.js"></script>
   <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
-  <!-- <script type="module" src="./script.js"></script> -->
   <script type="module" src="./script2.js"></script>
 
 </body>

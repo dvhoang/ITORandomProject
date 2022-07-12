@@ -1,3 +1,6 @@
+// Confetti! https://www.kirilv.com/canvas-confetti/
+import confetti from "https://cdn.skypack.dev/canvas-confetti";
+
 
 window.odometerOptions = {
     auto: false, // Don't automatically initialize everything with class 'odometer'
@@ -40,6 +43,9 @@ function init(){
             luckyArray[index++]=i
         }
     }
+    maskodometer1.classList.add("hidden-mask")
+    maskodometer2.classList.add("hidden-mask")
+    maskodometer3.classList.add("hidden-mask")
 }
 
 function randomRun(){
@@ -49,9 +55,9 @@ function randomRun(){
 
     const luckyNumber = luckyArray.splice(randomIndex, 1)
 
-    const luckyNum1 = Math.floor(luckyNumber / 100)
-    const luckyNum2 = Math.floor((luckyNumber - luckyNum1 * 100) / 10)
-    const luckyNum3 = (luckyNumber - luckyNum1 * 100) % 10
+    const luckyNum3 = Math.floor(luckyNumber / 100)
+    const luckyNum2 = Math.floor((luckyNumber - luckyNum3 * 100) / 10)
+    const luckyNum1 = (luckyNumber - luckyNum3 * 100) % 10
 
     console.log("arr:"+luckyArray)
     console.log("ln:"+luckyNumber)
@@ -65,22 +71,73 @@ function randomRun(){
     //     odometer1.innerHTML = 5;
     // }
 
+    maskodometer1.classList.remove("hidden-mask")
+    maskodometer2.classList.remove("hidden-mask")
+    maskodometer3.classList.remove("hidden-mask")
+
+    odometer1.innerHTML = (luckyNum1 + 5) % 10;
+    odometer2.innerHTML = (luckyNum2 + 5) % 10;
+    odometer3.innerHTML = (luckyNum3 + 5) % 10;
+    
     
     const delayInMilliseconds = 5000;
-    odometer3.innerHTML = luckyNum3;
-
+    
     setTimeout(function() {
-        odometer2.innerHTML = luckyNum2;
+        odometer1.innerHTML = luckyNum3;
+        maskodometer1.classList.add("hidden-mask")
     }, delayInMilliseconds);
 
     setTimeout(function() {
-        odometer1.innerHTML = luckyNum1;
-    }, 2*delayInMilliseconds);
+        odometer2.innerHTML = luckyNum2;
+        maskodometer2.classList.add("hidden-mask")
+    }, 2 * delayInMilliseconds);
+
+    setTimeout(function() {
+        odometer3.innerHTML = luckyNum1;
+        maskodometer3.classList.add("hidden-mask")
+    }, 3 * delayInMilliseconds);
+    
+    setTimeout(function() {
+        celebrate();
+    }, 3 * delayInMilliseconds + 2000);
 }
 
 function nextPage(){
+    // celebrate();
     console.log("click next")
     var x = document.getElementById("snackbar");
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+
+//========
+
+
+
+// const counter = document.querySelector(".counter");
+// const restartTrigger = document.querySelector(".btn-restart");
+
+const colors = [
+  getComputedStyle(document.body).getPropertyValue("--c1"),
+  getComputedStyle(document.body).getPropertyValue("--c2"),
+  getComputedStyle(document.body).getPropertyValue("--c3"),
+  getComputedStyle(document.body).getPropertyValue("--c4"),
+  getComputedStyle(document.body).getPropertyValue("--c5"),
+  getComputedStyle(document.body).getPropertyValue("--c6"),
+  getComputedStyle(document.body).getPropertyValue("--c7"),
+];
+
+
+function celebrate() {
+
+  confetti({
+    particleCount: 500,
+    startVelocity:40,
+    angle:-90,
+    spread: 360,
+    origin: { y: 0.5 },
+    colors,
+    disableForReducedMotion: false
+  });
 }
