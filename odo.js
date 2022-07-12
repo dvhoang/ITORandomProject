@@ -544,13 +544,18 @@
             }).apply(this);
           }
           var x;
-          var framelength = 
-          for(x = 99; x < 100; x++){
-            frames[x] = Math.abs(x%10);
+          var tempFrames = [];
+          
+          for(x = 0; x < frames.length; x++){
+            tempFrames[x] = frames[x];
           }
           for(x = 0; x < 100; x++){
             frames[x] = Math.abs(x%10);
           }
+          for(x = 0; x < tempFrames.length; x++){
+            frames[100 + x] = tempFrames[x];
+          }
+
           // for (i = _k = 0, _len = preFrames.length; _k < _len; i = ++_k) {
           //   frame = frames[i];
           //   preFrames[x+i] = Math.abs(frame % 10);
