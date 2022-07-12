@@ -69,6 +69,7 @@
     };
   
     round = function(val, precision) {
+      console.log("round")
       if (precision == null) {
         precision = 0;
       }
@@ -327,6 +328,7 @@
       };
   
       Odometer.prototype.update = function(newValue) {
+        console.log("update")
         var diff,
           _this = this;
         newValue = this.cleanValue(newValue);
@@ -350,10 +352,12 @@
       };
   
       Odometer.prototype.renderDigit = function() {
+        console.log("renderDigit")
         return createFromHTML(DIGIT_HTML);
       };
   
       Odometer.prototype.insertDigit = function(digit, before) {
+        console.log("insertDigit")
         if (before != null) {
           return this.inside.insertBefore(digit, before);
         } else if (!this.inside.children.length) {
@@ -364,6 +368,7 @@
       };
   
       Odometer.prototype.addSpacer = function(chr, before, extraClasses) {
+        console.log("addSpacer")
         var spacer;
         spacer = createFromHTML(FORMAT_MARK_HTML);
         spacer.innerHTML = chr;
@@ -374,6 +379,7 @@
       };
   
       Odometer.prototype.addDigit = function(value, repeating) {
+        console.log("addDigit")
         var chr, digit, resetted, _ref;
         if (repeating == null) {
           repeating = true;
@@ -409,6 +415,7 @@
       };
   
       Odometer.prototype.animate = function(newValue) {
+        console.log("animate")
         if (!TRANSITION_SUPPORT || this.options.animation === 'count') {
           return this.animateCount(newValue);
         } else {
@@ -417,6 +424,7 @@
       };
   
       Odometer.prototype.animateCount = function(newValue) {
+        console.log("animateCount")
         var cur, diff, last, start, tick,
           _this = this;
         if (!(diff = +newValue - this.value)) {
@@ -449,6 +457,7 @@
       };
   
       Odometer.prototype.getDigitCount = function() {
+        console.log("getDigitCount")
         var i, max, value, values, _i, _len;
         values = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
         for (i = _i = 0, _len = values.length; _i < _len; i = ++_i) {
@@ -460,6 +469,7 @@
       };
   
       Odometer.prototype.getFractionalDigitCount = function() {
+        console.log("getFractionalDigitCount")
         var i, parser, parts, value, values, _i, _len;
         values = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
         parser = /^\-?\d*\.(\d*?)0*$/;
@@ -477,6 +487,7 @@
       };
   
       Odometer.prototype.resetDigits = function() {
+        console.log("resetDigits")
         this.digits = [];
         this.ribbons = [];
         this.inside.innerHTML = '';
@@ -484,6 +495,7 @@
       };
   
       Odometer.prototype.animateSlide = function(newValue) {
+        console.log("animateSlide")
         var boosted, cur, diff, digitCount, digits, dist, end, fractionalCount, frame, frames, i, incr, j, mark, numEl, oldValue, start, _base, _i, _j, _k, _l, _len, _len1, _len2, _m, _ref, _results;
         oldValue = this.value;
         fractionalCount = this.getFractionalDigitCount(oldValue, newValue);
@@ -491,6 +503,8 @@
           newValue = newValue * Math.pow(10, fractionalCount);
           oldValue = oldValue * Math.pow(10, fractionalCount);
         }
+        console.log("newValue " + newValue)
+        console.log("oldValue " + oldValue)
         if (!(diff = newValue - oldValue)) {
           return;
         }
@@ -501,30 +515,48 @@
         for (i = _i = 0; 0 <= digitCount ? _i < digitCount : _i > digitCount; i = 0 <= digitCount ? ++_i : --_i) {
           start = truncate(oldValue / Math.pow(10, digitCount - i - 1));
           end = truncate(newValue / Math.pow(10, digitCount - i - 1));
+          console.log("s " + start)
+          console.log("e " + end)
           dist = end - start;
+          
           if (Math.abs(dist) > this.MAX_VALUES) {
             frames = [];
             incr = dist / (this.MAX_VALUES + this.MAX_VALUES * boosted * DIGIT_SPEEDBOOST);
             cur = start;
             while ((dist > 0 && cur < end) || (dist < 0 && cur > end)) {
+              console.log("c " + cur)
               frames.push(Math.round(cur));
               cur += incr;
             }
             if (frames[frames.length - 1] !== end) {
+              console.log("pe " + end)
               frames.push(end);
             }
             boosted++;
           } else {
             frames = (function() {
               _results = [];
-              for (var _j = start; start <= end ? _j <= end : _j >= end; start <= end ? _j++ : _j--){ _results.push(_j); }
+              for (var _j = start; start <= end ? _j <= end : _j >= end; start <= end ? _j++ : _j--){
+                console.log("pj " + _j) 
+                _results.push(_j); 
+              }
               return _results;
             }).apply(this);
           }
-          for (i = _k = 0, _len = frames.length; _k < _len; i = ++_k) {
-            frame = frames[i];
-            frames[i] = Math.abs(frame % 10);
+          var x;
+          var framelength = 
+          for(x = 99; x < 100; x++){
+            frames[x] = Math.abs(x%10);
           }
+          for(x = 0; x < 100; x++){
+            frames[x] = Math.abs(x%10);
+          }
+          // for (i = _k = 0, _len = preFrames.length; _k < _len; i = ++_k) {
+          //   frame = frames[i];
+          //   preFrames[x+i] = Math.abs(frame % 10);
+          //   console.log("i " + frames[i]) 
+          // }
+
           digits.push(frames);
         }
         this.resetDigits();
@@ -574,6 +606,7 @@
     Odometer.options = (_ref = window.odometerOptions) != null ? _ref : {};
   
     setTimeout(function() {
+      console.log("setTimeout")
       var k, v, _base, _ref1, _results;
       if (window.odometerOptions) {
         _ref1 = window.odometerOptions;
@@ -587,6 +620,7 @@
     }, 0);
   
     Odometer.init = function() {
+      console.log("init")
       var el, elements, _i, _len, _ref1, _results;
       if (document.querySelectorAll == null) {
         return;

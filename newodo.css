@@ -1,7 +1,7 @@
-/* .odometer{
+.odometermask{
   height: 1em;
   display: inline-block;
-} */
+}
 
 .digit {
   display: inline-block;

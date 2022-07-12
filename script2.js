@@ -65,9 +65,17 @@ function randomRun(){
     //     odometer1.innerHTML = 5;
     // }
 
-    odometer1.innerHTML = luckyNum1;
-    odometer2.innerHTML = luckyNum2;
+    
+    const delayInMilliseconds = 5000;
     odometer3.innerHTML = luckyNum3;
+
+    setTimeout(function() {
+        odometer2.innerHTML = luckyNum2;
+    }, delayInMilliseconds);
+
+    setTimeout(function() {
+        odometer1.innerHTML = luckyNum1;
+    }, 2*delayInMilliseconds);
 }
 
 function nextPage(){
