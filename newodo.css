@@ -1,8 +1,7 @@
-.odometer {
+/* .odometer{
   height: 1em;
-  color: rgba(255, 255, 255, 0.9);
   display: inline-block;
-}
+} */
 
 .digit {
   display: inline-block;
