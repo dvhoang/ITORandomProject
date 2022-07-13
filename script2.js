@@ -105,9 +105,11 @@ function randomRun(){
 function nextPage(){
     // celebrate();
     console.log("click next")
-    var x = document.getElementById("snackbar");
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    // var x = document.getElementById("snackbar");
+    // x.className = "show";
+    // setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    window.location.href = 'whell.html';
+    // window.open("whell.html", "_blank");
 }
 
 
