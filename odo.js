@@ -503,9 +503,6 @@
           newValue = newValue * Math.pow(10, fractionalCount);
           oldValue = oldValue * Math.pow(10, fractionalCount);
         }
-        if(oldValue == newValue){
-            oldValue = oldValue + 1;
-        }
         console.log("newValue " + newValue)
         console.log("oldValue " + oldValue)
         if (!(diff = newValue - oldValue)) {
