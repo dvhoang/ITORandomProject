@@ -34,12 +34,13 @@ function randomIntFromInterval(min, max) {
 }
 
 var luckyArray = []
+var ignArray = [110, 146,137,100,121,120,139,180,109,133,123,174,147,149,151,101,148,152,150,153,166,186,185,184,187,188,189,190,191,192,195,196,162,163,113,164,183,122]
 
 init();
 function init(){
     var index = 0
-    for(let i = 100; i< 200; i++){
-        if(i%2 != 0){
+    for(let i = 100; i < 197; i++){
+        if(ignArray.indexOf(i) == -1){
             luckyArray[index++]=i
         }
     }
