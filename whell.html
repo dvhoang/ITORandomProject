@@ -52,6 +52,14 @@ SOFTWARE.
     background-image: url(bg.jpg);
     background-repeat: no-repeat;
     background-size:cover;
+
+    --c1: #ff9500;
+    --c2: #008358;
+    --c3: #048aff;
+    --c4: #f6e27a;
+    --c5: #00ff1a;
+    --c6: #cc00ff;
+    --c7: #ff0000;
     }
 
     #question h1{
@@ -94,10 +102,16 @@ SOFTWARE.
         </div>
     </div>
     
+    <!-- <script type="module" src="./whellscript.js"></script> -->
     
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8">
+    <script type="module">
+        import { celebrate } from "./whellscript.js";
+        window.celebrate = celebrate;
     </script>
+
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
+
         var padding = {top:20, right:40, bottom:0, left:0},
             w = 700 - padding.left - padding.right,
             h = 700 - padding.top  - padding.bottom,
@@ -209,7 +223,7 @@ SOFTWARE.
                 .duration(3000)
                 .attrTween("transform", rotTween)
                 .each("end", function(){
-
+                    celebrate();
                     //mark question as seen
                     d3.select(".slice:nth-child(" + (picked + 1) + ") path")
                         .attr("fill", "#9c9998");
@@ -265,7 +279,7 @@ SOFTWARE.
                 .duration(3000)
                 .attrTween("transform", rotTween)
                 .each("end", function(){
-
+                    celebrate();
                     //mark question as seen
                     d3.select(".slice:nth-child(" + (picked + 1) + ") path")
                         .attr("fill", "#9c9998");
