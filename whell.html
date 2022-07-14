@@ -32,55 +32,68 @@ SOFTWARE.
     <style type="text/css">
     text{
         font-family:Helvetica, Arial, sans-serif;
-        font-size:20px;
+        font-size:25px;
         font-weight: bold;
         pointer-events:none;
     }
     #chart{
-        
-        width:500px;
-        height:500px;
-        top:0;
-        left:0;
+    
+    width:500px;
+    height:500px;
+    top:0;
+    left:0;
     }
-    body {
-      background-image: url(bg.jpg);
-      background-repeat: no-repeat;
-      background-size:cover;
+
+    body, html{
+    height: 100%;
     }
-    #question{
-        position: absolute;
-        width:400px;
-        height:500px;
-        top:0;
-        left:520px;
+
+    body, html {
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
     }
+
     #question h1{
-        font-size: 50px;
-        font-weight: bold;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        position: absolute;
-        padding: 0;
-        margin: 0;
-        top:50%;
-        -webkit-transform:translate(0,-50%);
-                transform:translate(0,-50%);
+    color: transparent;
+    font-size: 70px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    background-image: linear-gradient(
+        to bottom,
+        #462523 0,
+        #cb9b51 22%,
+        #f6e27a 45%,
+        #f6f2c0 50%,
+        #f6e27a 55%,
+        #cb9b51 78%,
+        #462523 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: #cb9b51;
     }
+
     .whellbox{
-        width: 700px;
-        height: 700px;
+    width: 700px;
+    height: 700px;
     }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <div class="d-flex align-items-center justify-content-center mt-5 h-25">
-        <div class="whellbox align-items-center justify-content-center mt-5 h-25">
+    <div class="d-flex align-items-center justify-content-center mt-5">
+        <div id="question">
+            <h1>YOUR GIFT</h1>
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center h-25">
+        <div class="whellbox align-items-center justify-content-center h-25">
             <div id="chart"></div>
         </div>
     </div>
     
-    <div id="question"><h1></h1></div>
     
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8">
     </script>
@@ -99,16 +112,16 @@ SOFTWARE.
         //http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
 
         var data = [
-            {"label":"Secret box",  "value":1,  "question":""},
-            {"label":"Beer", "value":1, "question":""},
-            {"label":"Apple iPhone 11",  "value":1,  "question":""},
-            {"label":"Romanal",  "value":1,  "question":""},
-            {"label":"Supper speed kettle",  "value":1,  "question":""}, 
-            {"label":"Enchanteur charming",  "value":1,  "question":""}, 
-            {"label":"Sony True wireless",  "value":1,  "question":""}, 
-            {"label":"Anker Power core",  "value":1,  "question":""}, 
-            {"label":"Beer",  "value":1,  "question":""}, 
-            {"label":"Apple Watch 3",  "value":1,  "question":""},   
+            {"question":"Secret box",  "value":1,  "label":"1 🎁 Secret box"},
+            {"question":"Drink 1 can of Beer", "value":1, "label":"2 🍺 Beer"},
+            {"question":"Romano",  "value":1,  "label":"3 Consolation"},
+            {"question":"Apple iPhone 11",  "value":1,  "label":"4 📱 First prize"},
+            {"question":"Supper speed kettle",  "value":1,  "label":"5 Consolation"}, 
+            {"question":"Sony True wireless",  "value":1,  "label":"6 🎧 Third prize"}, 
+            {"question":"Anker Power core",  "value":1,  "label":"7 Consolation"}, 
+            {"question":"Drink 1 can of Beer",  "value":1,  "label":"8 🍺 Beer"}, 
+            {"question":"Enchanteur charming",  "value":1,  "label":"9 Consolation"}, 
+            {"question":"Apple Watch 3",  "value":1,  "label":"10 ⌚ Second prize"},   
         ];
 
 
@@ -172,12 +185,15 @@ SOFTWARE.
             var  ps       = 360/data.length,
                  pieslice = Math.round(1440/data.length),
                  rng      = Math.floor((Math.random() * 1440) + 360);
-                
-            rotation = (Math.round(rng / ps) * ps);
+                 
             
+            rotation = rotation + ps;
+            console.log("rot "+ rotation)
+
             picked = Math.round(data.length - (rotation % 360)/ps);
             picked = picked >= data.length ? (picked % data.length) : picked;
 
+            console.log("picked "+picked)
 
             if(oldpick.indexOf(picked) !== -1){
                 d3.select(this).call(spin);
@@ -221,6 +237,12 @@ SOFTWARE.
             .attr("r", 60)
             .style({"fill":"white","cursor":"pointer"});
 
+        container.append("circle")
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .attr("r", 60)
+        .style({"fill":"white","cursor":"pointer"});
+
         //spin text
         container.append("text")
             .attr("x", 0)
@@ -238,22 +260,35 @@ SOFTWARE.
         }
         
         
-        function getRandomNumbers(){
-            var array = new Uint16Array(1000);
-            var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
+        // function getRandomNumbers(){
+        //     var array = new Uint16Array(1000);
+        //     var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
 
-            if(window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function"){
-                window.crypto.getRandomValues(array);
-                console.log("works");
-            } else {
-                //no support for crypto, get crappy random numbers
-                for(var i=0; i < 1000; i++){
-                    array[i] = Math.floor(Math.random() * 100000) + 1;
-                }
+        //     if(window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function"){
+        //         window.crypto.getRandomValues(array);
+        //         console.log("works");
+        //     } else {
+        //         //no support for crypto, get crappy random numbers
+        //         for(var i=0; i < 1000; i++){
+        //             array[i] = Math.floor(Math.random() * 100000) + 1;
+        //         }
+        //     }
+
+        //     return array;
+        // }
+
+        document.addEventListener('keydown', (event) => {
+            var name = event.key;
+            var code = event.code;
+            if (name === 'Control') {
+                // Do nothing.
+                return;
             }
-
-            return array;
-        }
+            if (code == 'KeyR') {
+                //alert(`Combination of ctrlKey + ${name} \n Key code Value: ${code}`);
+                spin();
+            }
+            }, false);
 
     </script>
 </body>
