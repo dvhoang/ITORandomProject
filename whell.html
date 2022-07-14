@@ -106,22 +106,23 @@ SOFTWARE.
             oldrotation = 0,
             picked = 100000,
             oldpick = [],
+            indexu = [0, 1, 2, 7, 8, 4, 6, 5, 9, 3]
             color = d3.scale.category20();//category20c()
             //randomNumbers = getRandomNumbers();
 
         //http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
 
         var data = [
-            {"question":"Secret box",  "value":1,  "label":"1 🎁 Secret box"},
-            {"question":"Drink 1 can of Beer", "value":1, "label":"2 🍺 Beer"},
-            {"question":"Romano",  "value":1,  "label":"3 Consolation"},
-            {"question":"Apple iPhone 11",  "value":1,  "label":"4 📱 First prize"},
-            {"question":"Supper speed kettle",  "value":1,  "label":"5 Consolation"}, 
-            {"question":"Sony True wireless",  "value":1,  "label":"6 🎧 Third prize"}, 
-            {"question":"Anker Power core",  "value":1,  "label":"7 Consolation"}, 
-            {"question":"Drink 1 can of Beer",  "value":1,  "label":"8 🍺 Beer"}, 
-            {"question":"Enchanteur charming",  "value":1,  "label":"9 Consolation"}, 
-            {"question":"Apple Watch 3",  "value":1,  "label":"10 ⌚ Second prize"},   
+            {"question":"Secret box",  "value":1,  "label":"🎁 Secret box"},//
+            {"question":"Drink 1 can of Beer", "value":1, "label":"🍺 Beer"},//
+            {"question":"Romano",  "value":1,  "label":"Consolation"},//
+            {"question":"Apple iPhone 11",  "value":1,  "label":"📱 First prize"},
+            {"question":"Supper speed kettle",  "value":1,  "label":"Consolation"},// 
+            {"question":"Sony True wireless",  "value":1,  "label":"🎧 Third prize"}, 
+            {"question":"Anker Power core",  "value":1,  "label":"Consolation"}, //
+            {"question":"Drink 1 can of Beer",  "value":1,  "label":"🍺 Beer"}, //
+            {"question":"Enchanteur charming",  "value":1,  "label":"Consolation"}, //
+            {"question":"Apple Watch 3",  "value":1,  "label":"⌚ Second prize"},   
         ];
 
 
@@ -223,6 +224,62 @@ SOFTWARE.
                 });
         }
 
+        function spinx(ran){
+            
+            container.on("click", null);
+
+            //all slices have been seen, all done
+            console.log("OldPick: " + oldpick.length, "Data length: " + data.length);
+            if(oldpick.length == data.length){
+                console.log("done");
+                container.on("click", null);
+                return;
+            }
+
+            var  ps       = 360/data.length,
+                 pieslice = Math.round(1440/data.length),
+                 rng      = Math.floor((Math.random() * 1440) + 360);
+                 
+            
+            // rotation = rotation + ps;
+            // console.log("rot "+ rotation)
+
+            rotation = (data.length - ran) * ps + 360*2;
+
+            picked = ran; //Math.round(data.length - (rotation % 360)/ps);
+            // picked = picked >= data.length ? (picked % data.length) : picked;
+
+            console.log("picked "+picked)
+
+            if(oldpick.indexOf(picked) !== -1){
+                // d3.select(this).call(spin);
+                spinx(ran+1)
+                return;
+            } else {
+                oldpick.push(picked);
+            }
+
+            rotation += 90 - Math.round(ps/2);
+
+            vis.transition()
+                .duration(3000)
+                .attrTween("transform", rotTween)
+                .each("end", function(){
+
+                    //mark question as seen
+                    d3.select(".slice:nth-child(" + (picked + 1) + ") path")
+                        .attr("fill", "#9c9998");
+
+                    //populate question
+                    d3.select("#question h1")
+                        .text(data[picked].question);
+
+                    oldrotation = rotation;
+                
+                    container.on("click", spin);
+                });
+        }
+
         //make arrow
         svg.append("g")
             .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
@@ -286,7 +343,15 @@ SOFTWARE.
             }
             if (code == 'KeyR') {
                 //alert(`Combination of ctrlKey + ${name} \n Key code Value: ${code}`);
-                spin();
+                var i = 0;
+                for(i = 0; i < data.length; i++){
+                    if(oldpick.indexOf(indexu[i]) == -1){
+                        console.log(">i " + indexu[i])
+                        console.log(">arr " + oldpick)
+                        break;
+                    }
+                }
+                spinx(indexu[i]);
             }
             }, false);
 
