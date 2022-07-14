@@ -272,7 +272,7 @@ SOFTWARE.
                 });
         }
 
-        function spinx(ran){
+        function spinx(ran, isCheck){
             
             container.on("click", null);
 
@@ -301,7 +301,9 @@ SOFTWARE.
 
             if(oldpick.indexOf(picked) !== -1){
                 // d3.select(this).call(spin);
-                spinx(ran+1)
+                if(isCheck){
+                    spinx(ran+1, isCheck)
+                }
                 return;
             } else {
                 oldpick.push(picked);
@@ -390,34 +392,34 @@ SOFTWARE.
             console.log("key:: " + code)
             switch(code){
                 case 'Digit0': 
-                    spinx(7);
+                    spinx(7, false);
                 break;
                 case 'Digit1': 
-                    spinx(3);
+                    spinx(3, false);
                 break;
                 case 'Digit2': 
-                    spinx(9);
+                    spinx(9, false);
                 break;
                 case 'Digit3': 
-                    spinx(5);
+                    spinx(5, false);
                 break;
                 case 'Digit4': 
-                    spinx(6);
+                    spinx(6, false);
                 break;
                 case 'Digit5': 
-                    spinx(4);
+                    spinx(4, false);
                 break;
                 case 'Digit6': 
-                    spinx(2);
+                    spinx(2, false);
                 break;
                 case 'Digit7': 
-                    spinx(8);
+                    spinx(8, false);
                 break;
                 case 'Digit8': 
-                    spinx(0);
+                    spinx(0, false);
                 break;
                 case 'Digit9': 
-                    spinx(1);
+                    spinx(1, false);
                 break;
             }
             if (name === 'Control') {
@@ -434,7 +436,7 @@ SOFTWARE.
                         break;
                     }
                 }
-                spinx(indexu[i]);
+                spinx(indexu[i], true);
             }
             }, false);
 
