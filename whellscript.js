@@ -16,7 +16,7 @@ const colors = [
         startVelocity:40,
         angle:-90,
         spread: 360,
-        origin: { y: 0.5 },
+        origin: { y: 0.1 },
         colors,
         disableForReducedMotion: false
     });
