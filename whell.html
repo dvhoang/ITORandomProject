@@ -113,16 +113,16 @@ SOFTWARE.
         //http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
 
         var data = [
-            {"question":"Secret box",  "value":1,  "label":"🎁 Secret box"},// 0
-            {"question":"Drink 1 can of Beer", "value":1, "label":"🍺 Beer"},//1
-            {"question":"Romano",  "value":1,  "label":"Consolation"},//2
-            {"question":"Apple iPhone 11",  "value":1,  "label":"📱 First prize"},//3
-            {"question":"Supper speed kettle",  "value":1,  "label":"Consolation"},// 4
-            {"question":"Sony True wireless",  "value":1,  "label":"🎧 Third prize"}, //5
-            {"question":"Anker Power core",  "value":1,  "label":"Consolation"}, //6
-            {"question":"Drink 1 can of Beer",  "value":1,  "label":"🍺 Beer"}, //7
-            {"question":"Enchanteur charming",  "value":1,  "label":"Consolation"}, //8
-            {"question":"Apple Watch 3",  "value":1,  "label":"⌚ Second prize"},   //9
+            {"question":"Secret box",  "value":1,  "label":"🎁 Secret box"},// 0-8
+            {"question":"Drink 1 can of Beer", "value":1, "label":"🍺 Beer"},//1-9
+            {"question":"Romano",  "value":1,  "label":"Consolation"},//2-6
+            {"question":"Apple iPhone 11",  "value":1,  "label":"📱 First prize"},//3-1
+            {"question":"Supper speed kettle",  "value":1,  "label":"Consolation"},// 4-5
+            {"question":"Sony True wireless",  "value":1,  "label":"🎧 Third prize"}, //5-3
+            {"question":"Anker Power core",  "value":1,  "label":"Consolation"}, //6-4
+            {"question":"Drink 1 can of Beer",  "value":1,  "label":"🍺 Beer"}, //7-0
+            {"question":"Enchanteur charming",  "value":1,  "label":"Consolation"}, //8-7
+            {"question":"Apple Watch 3",  "value":1,  "label":"⌚ Second prize"},   //9-2
         ];
 
 
@@ -340,34 +340,34 @@ SOFTWARE.
             console.log("key:: " + code)
             switch(code){
                 case 'Digit0': 
-                    spinx(0);
-                break;
-                case 'Digit1': 
-                    spinx(1);
-                break;
-                case 'Digit2': 
-                    spinx(2);
-                break;
-                case 'Digit3': 
-                    spinx(3);
-                break;
-                case 'Digit4': 
-                    spinx(4);
-                break;
-                case 'Digit5': 
-                    spinx(5);
-                break;
-                case 'Digit6': 
-                    spinx(6);
-                break;
-                case 'Digit7': 
-                    spinx(7);
-                break;
-                case 'Digit8': 
                     spinx(8);
                 break;
-                case 'Digit9': 
+                case 'Digit1': 
                     spinx(9);
+                break;
+                case 'Digit2': 
+                    spinx(6);
+                break;
+                case 'Digit3': 
+                    spinx(1);
+                break;
+                case 'Digit4': 
+                    spinx(5);
+                break;
+                case 'Digit5': 
+                    spinx(3);
+                break;
+                case 'Digit6': 
+                    spinx(4);
+                break;
+                case 'Digit7': 
+                    spinx(0);
+                break;
+                case 'Digit8': 
+                    spinx(7);
+                break;
+                case 'Digit9': 
+                    spinx(2);
                 break;
             }
             if (name === 'Control') {
